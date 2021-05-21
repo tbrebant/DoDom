@@ -7,6 +7,7 @@ export default class DoDom {
 		this.dom = document.createElement(type);
 		this.name = options.name || null;
 		this.children = [];
+		this.parent = null;
 		if (options.classes) { this.addClasses(options.classes); }
 		if (options.styles) { this.setStyles(options.styles); }
 		if (options.onClick) { this.onClick(options.onClick); }
@@ -39,6 +40,7 @@ export default class DoDom {
 	
 	appendChild (doDomChild) {
 		this.children.push(doDomChild);
+		doDomChild.parent = this;
 		this.dom.appendChild(doDomChild.dom);
 		return doDomChild;
 	}
@@ -68,6 +70,12 @@ export default class DoDom {
 	}
 	
 	destroy () {
+		if (this.parent) {
+			let index = this.parent.children.indexOf(this);
+			if (index > -1) {
+				this.parent.children.splice(index, 1);
+			}
+		}
 		this.dom.parentNode.removeChild(this.dom);
 		this.dom = null;
 		for (var i = 0; i < this.children.length; i++) {
