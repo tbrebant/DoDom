@@ -9,6 +9,7 @@ export default class DoDom {
 		this.children = [];
 		this.parent = null;
 		if (options.classes) { this.addClasses(options.classes); }
+		if (options.class) { this.addClass(options.class); }
 		if (options.styles) { this.setStyles(options.styles); }
 		if (options.onClick) { this.onClick(options.onClick); }
 		if (options.attachToBody) { document.body.appendChild(this.dom); }
@@ -92,7 +93,7 @@ export default class DoDom {
 	}
 	
 	show () {
-		this.dom.style.display = 'inherit';
+		this.dom.style.display = '';
 	}
 	
 	hide () {
