@@ -1,3 +1,6 @@
+# 1.0.2
+- Added method `setVisibility`
+
 # 1.0.1
 - Fixed display `inherit` overwriting initial value when calling `.show()`
 - Added `class` option in constructor

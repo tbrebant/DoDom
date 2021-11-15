@@ -99,6 +99,14 @@ export default class DoDom {
 	hide () {
 		this.dom.style.display = 'none';
 	}
+
+	setVisibility (shouldShow) {
+		if (shouldShow) {
+			this.show();
+		} else {
+			this.hide();
+		}
+	}
 }
 
 // from https://stackoverflow.com/a/53520657
