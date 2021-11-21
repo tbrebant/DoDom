@@ -1,3 +1,6 @@
+# 1.0.3
+- Added `children` constructor option
+
 # 1.0.2
 - Added method `setVisibility`
 

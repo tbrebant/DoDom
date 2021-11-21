@@ -17,6 +17,9 @@ export default class DoDom {
 		if (options.text) { this.setText(options.text); }
 		if (options.html) { this.setHTML(options.html); }
 		if (options.visible !== undefined && !options.visible) { this.hide(); }
+		if (options.children) {
+			options.children.forEach((dodom) => { this.appendChild(dodom); });
+		}
 	}
 	
 	setStyles (styles) {
