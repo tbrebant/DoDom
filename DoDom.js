@@ -82,11 +82,15 @@ export default class DoDom {
 		}
 		this.dom.parentNode.removeChild(this.dom);
 		this.dom = null;
+		this.destroyChildren();
+	}
+	
+	destroyChildren () {
 		for (var i = 0; i < this.children.length; i++) {
 			this.children[i].destroy();
 		}
 	}
-	
+
 	getChild (name) {
 		for (var i = 0; i < this.children.length; i++) {
 			if (this.children[i].name === name) {

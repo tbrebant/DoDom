@@ -1,3 +1,6 @@
+# 1.0.4
+- Added `destroyChildren` method
+
 # 1.0.3
 - Added `children` constructor option
 
