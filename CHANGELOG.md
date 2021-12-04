@@ -1,3 +1,6 @@
+# 1.0.5
+- Added shortcuts: `addDomText()`, `addDomHtml()`, `addDoDom()`
+
 # 1.0.4
 - Added `destroyChildren` method
 

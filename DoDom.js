@@ -114,6 +114,20 @@ export default class DoDom {
 			this.hide();
 		}
 	}
+
+	addDomText (text, options = {}) {
+		options.text = text;
+		return this.addDoDom('div', options);
+	}
+	
+	addDomHtml (text, options = {}) {
+		options.html = text;
+		return this.addDoDom('div', options);
+	}
+
+	addDoDom (type, options) {
+		return this.appendChild(new DoDom(type, options));
+	}
 }
 
 // from https://stackoverflow.com/a/53520657
