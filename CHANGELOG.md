@@ -1,3 +1,6 @@
+# 1.0.6
+- Fixed critical bug in `destroyChildren`
+
 # 1.0.5
 - Added shortcuts: `addDomText()`, `addDomHtml()`, `addDoDom()`
 

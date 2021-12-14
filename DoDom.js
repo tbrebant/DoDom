@@ -86,9 +86,14 @@ export default class DoDom {
 	}
 	
 	destroyChildren () {
-		for (var i = 0; i < this.children.length; i++) {
-			this.children[i].destroy();
+		let toDelete = [];
+		for (let i = 0; i < this.children.length; i++) {
+			toDelete.push(this.children[i]);
 		}
+		for (let i = 0; i < toDelete.length; i++) {
+			toDelete[i].destroy();
+		}
+		toDelete = null;
 	}
 
 	getChild (name) {
