@@ -122,7 +122,7 @@ export default class DoDom {
 
 	addDomText (text, options = {}) {
 		options.text = text;
-		return this.addDoDom('div', options);
+		return this.addDoDom('span', options);
 	}
 	
 	addDomHtml (text, options = {}) {

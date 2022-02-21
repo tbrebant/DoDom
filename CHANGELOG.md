@@ -1,3 +1,6 @@
+# 1.1.0
+- `addDomText` is now using a span instead of a div
+
 # 1.0.6
 - Fixed critical bug in `destroyChildren`
 
