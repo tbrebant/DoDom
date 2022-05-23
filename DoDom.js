@@ -49,6 +49,13 @@ export default class DoDom {
 		return doDomChild;
 	}
 	
+	prependChild (doDomChild) {
+		this.children.push(doDomChild);
+		doDomChild.parent = this;
+		this.dom.prepend(doDomChild.dom);
+		return doDomChild;
+	}
+
 	setText (str) {
 		this.dom.innerText = str;
 	}

@@ -1,3 +1,6 @@
+# 1.1.1
+- Added `prependChild()`
+
 # 1.1.0
 - `addDomText` is now using a span instead of a div
 
