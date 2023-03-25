@@ -1,3 +1,6 @@
+# 1.1.2
+- Added `removeFromParent()`
+
 # 1.1.1
 - Added `prependChild()`
 
