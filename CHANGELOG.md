@@ -1,4 +1,4 @@
-#1.1.3
+# 1.1.3
 - Added a way to init a DoDom with an existing DOM element
 
 # 1.1.2
