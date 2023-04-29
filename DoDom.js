@@ -3,8 +3,12 @@
 export default class DoDom {
 	constructor (type, options) {
 		options = options || {};
-		type = type || 'div';
-		this.dom = document.createElement(type);
+		if (isDomElement(type)) {
+			this.dom = type;
+		} else {
+			type = type || 'div';
+			this.dom = document.createElement(type);
+		}
 		this.name = options.name || null;
 		this.children = [];
 		this.parent = null;
@@ -157,4 +161,8 @@ function isTouchDevice () {
 	}
 	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
 	return mq(query);
+}
+
+function isDomElement(element) {
+	return element instanceof Element || element instanceof HTMLDocument;  
 }
