@@ -136,16 +136,28 @@ export default class DoDom {
 	}
 
 	addDomText (text, options = {}) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDomText`');
+			delete options.parent;
+		}
 		options.text = text;
 		return this.addDoDom('span', options);
 	}
 	
 	addDomHtml (text, options = {}) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDomHtml`');
+			delete options.parent;
+		}
 		options.html = text;
 		return this.addDoDom('div', options);
 	}
 
 	addDoDom (type, options) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDoDom`');
+			delete options.parent;
+		}
 		return this.appendChild(new DoDom(type, options));
 	}
 }
