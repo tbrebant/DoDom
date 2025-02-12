@@ -3,8 +3,12 @@
 export default class DoDom {
 	constructor (type, options) {
 		options = options || {};
-		type = type || 'div';
-		this.dom = document.createElement(type);
+		if (isDomElement(type)) {
+			this.dom = type;
+		} else {
+			type = type || 'div';
+			this.dom = document.createElement(type);
+		}
 		this.name = options.name || null;
 		this.children = [];
 		this.parent = null;
@@ -14,12 +18,14 @@ export default class DoDom {
 		if (options.onClick) { this.onClick(options.onClick); }
 		if (options.attachToBody) { document.body.appendChild(this.dom); }
 		if (options.parent) { options.parent.appendChild(this); }
-		if (options.text) { this.setText(options.text); }
+		if (options.text !== undefined) { this.setText(options.text); }
 		if (options.html) { this.setHTML(options.html); }
 		if (options.visible !== undefined && !options.visible) { this.hide(); }
 		if (options.children) {
 			options.children.forEach((dodom) => { this.appendChild(dodom); });
 		}
+		this.isDoDom = true;
+		this.destroyed = false;
 	}
 	
 	setStyles (styles) {
@@ -42,6 +48,12 @@ export default class DoDom {
 		this.dom.classList.remove(c);
 	}
 	
+	removeClasses (t) {
+		for (let c of t) {
+			this.removeClass(c);
+		}
+	}
+
 	appendChild (doDomChild) {
 		this.children.push(doDomChild);
 		doDomChild.parent = this;
@@ -57,6 +69,7 @@ export default class DoDom {
 	}
 
 	setText (str) {
+		this.destroyChildren();
 		this.dom.innerText = str;
 	}
 	
@@ -69,9 +82,10 @@ export default class DoDom {
 	}
 	
 	setHTML (str) {
+		this.destroyChildren();
 		this.dom.innerHTML = str;
 	}
-	
+
 	onClick (method) {
 		if (isTouchDevice()) {
 			this.dom.addEventListener('touchend', method, false);
@@ -80,7 +94,7 @@ export default class DoDom {
 		}
 	}
 	
-	destroy () {
+	removeFromParent () {
 		if (this.parent) {
 			let index = this.parent.children.indexOf(this);
 			if (index > -1) {
@@ -88,8 +102,13 @@ export default class DoDom {
 			}
 		}
 		this.dom.parentNode.removeChild(this.dom);
+	}
+
+	destroy () {
+		this.removeFromParent();
 		this.dom = null;
 		this.destroyChildren();
+		this.destroyed = true;
 	}
 	
 	destroyChildren () {
@@ -128,17 +147,33 @@ export default class DoDom {
 	}
 
 	addDomText (text, options = {}) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDomText`');
+			delete options.parent;
+		}
 		options.text = text;
 		return this.addDoDom('span', options);
 	}
 	
 	addDomHtml (text, options = {}) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDomHtml`');
+			delete options.parent;
+		}
 		options.html = text;
 		return this.addDoDom('div', options);
 	}
 
 	addDoDom (type, options) {
+		if (options.parent) {
+			console.warn('Cannot use `parent` parameter when using `addDoDom`');
+			delete options.parent;
+		}
 		return this.appendChild(new DoDom(type, options));
+	}
+
+	attachToBody () {
+		document.body.appendChild(this.dom);
 	}
 }
 
@@ -153,4 +188,8 @@ function isTouchDevice () {
 	}
 	var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
 	return mq(query);
+}
+
+function isDomElement(element) {
+	return element instanceof Element || element instanceof HTMLDocument;  
 }

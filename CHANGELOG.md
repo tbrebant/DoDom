@@ -1,3 +1,12 @@
+# 1.2.0
+- Added possibility to pass a Dom element instead of a Dom type to constructor
+- Added a flag to determine if object is a DoDom instance
+- Added a flag to determine if DoDom object has been destroyed
+- Added a method to remove all CSS classes
+- Added a method to remove a DoDom from its parent
+- Added a method to add a DoDom to document body
+- Fixed a couple of corner case bugs
+
 # 1.1.1
 - Added `prependChild()`
 
