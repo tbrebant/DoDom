@@ -1,3 +1,8 @@
+# 2.0.0
+- Changed export format for npm package compatibility (breaking change)
+- Published npm package
+- Better `onClick` handling on mobile
+
 # 1.2.0
 - Added a flag `isDoDom` to determine if object is a DoDom instance
 - Added a flag `destroyed` to determine if DoDom object has been destroyed
