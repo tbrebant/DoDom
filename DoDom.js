@@ -34,6 +34,10 @@ class DoDom {
     }
   }
   
+  setStyle (key, value) {
+    this.dom.style[key] = value;
+  }
+
   addClasses (classes) {
     for (var i = 0; i < classes.length; i++) {
       this.addClass(classes[i]);
@@ -147,6 +151,10 @@ class DoDom {
     } else {
       this.hide();
     }
+  }
+
+  reflow () {
+    return this.dom.offsetHeight;
   }
 
   addDomText (text, options = {}) {

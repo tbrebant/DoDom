@@ -1,3 +1,7 @@
+# 2.1.0
+- Added `setStyle()`
+- Added `reflow()`
+
 # 2.0.0
 - Changed export format for npm package compatibility (breaking change)
 - Published npm package
