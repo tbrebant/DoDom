@@ -1,3 +1,6 @@
+# 3.0.0
+- `onClick` now uses `pointerup` event (removed deprecated ways to detect mouse/touch devices)
+
 # 2.1.0
 - Added `setStyle()`
 - Added `reflow()`

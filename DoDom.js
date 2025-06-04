@@ -91,14 +91,7 @@ class DoDom {
   }
 
   onClick (method) {
-    if (isTouchDevice()) {
-      this.dom.addEventListener('touchend', (event) => {
-        if (DoDom.isMoving) { return; }
-        method(event);
-      }, false);
-    } else {
-      this.dom.addEventListener('click', method, false);
-    }
+    this.dom.addEventListener('pointerup', method, false);
   }
   
   removeFromParent () {
@@ -188,37 +181,8 @@ class DoDom {
   }
 }
 
-// from https://stackoverflow.com/a/53520657
-function isTouchDevice () {
-  var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
-  var mq = function (query) {
-    return window.matchMedia(query).matches;
-  };
-  if (('ontouchstart' in window) || window.DocumentTouch && document instanceof window.DocumentTouch) {
-    return true;
-  }
-  var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
-  return mq(query);
-}
-
 function isDomElement(element) {
   return element instanceof Element || element instanceof HTMLDocument;  
-}
-
-DoDom.isMoving = false;
-if (isTouchDevice()) {
-  document.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) { DoDom.isMoving = false; }
-  });
-  document.addEventListener('touchmove', () => {
-    DoDom.isMoving = true;
-  });
-  document.addEventListener('touchend', (e) => {
-    if (e.touches.length === 0) { DoDom.isMoving = false; }
-  });
-  document.addEventListener('touchcancel', (e) => {
-    if (e.touches.length === 0) { DoDom.isMoving = false; }
-  });
 }
 
 module.exports = DoDom;
