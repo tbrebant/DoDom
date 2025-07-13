@@ -1,7 +1,7 @@
 {
   "name": "dodom",
-  "version": "3.0.0",
-  "description": "A simple minimalist class to manipulate DOM objects (yet another one)",
+  "version": "3.1.0",
+  "description": "A simple minimalist class to manipulate DOM objects",
   "main": "DoDom.js",
   "scripts": {},
   "author": "Thibaut Brébant",

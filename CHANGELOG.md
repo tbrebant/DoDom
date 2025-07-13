@@ -1,3 +1,7 @@
+# 3.1.0
+- Restored support of `<script src="DoDom.js"></script>`.
+- Added documentation, including instructions for usage with modern browsers' ESM import.
+
 # 3.0.0
 - `onClick` now uses `pointerup` event (removed deprecated ways to detect mouse/touch devices)
 

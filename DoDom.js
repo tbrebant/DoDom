@@ -185,4 +185,10 @@ function isDomElement(element) {
   return element instanceof Element || element instanceof HTMLDocument;  
 }
 
-module.exports = DoDom;
+// Node, Webpack, browsers (via <script src="">)
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+  module.exports = DoDom;
+}
+
+// Modern browser (ESM)
+// export default DoDom;
