@@ -1,3 +1,6 @@
+# 3.1.1
+- New `addDomTexts()` method for easier complex inline strings building.
+
 # 3.1.0
 - Restored support of `<script src="DoDom.js"></script>`.
 - Added documentation, including instructions for usage with modern browsers' ESM import.

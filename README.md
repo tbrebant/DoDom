@@ -102,6 +102,7 @@ new DoDom(type, options)
 - `addDoDom(type, options)`: Adds a child DoDom instance of the specified type.
 - `addDomText(text, options)`: Adds a child DoDom instance with text content.
 - `addDomHtml(html, options)`: Adds a child DoDom instance with HTML content.
+- `addDomTexts(elements, options)`: Adds multiple inline text elements wrapped in a child DoDom instance. 
 
 #### DOM Manipulation
 - `appendChild(doDomChild)`: Appends a child DoDom instance.
