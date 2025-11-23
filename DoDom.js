@@ -181,6 +181,19 @@ class DoDom {
     return this.addDoDom('div', options);
   }
 
+  addDomHtmls (elements = [], options = {}) {
+    let wrapper = this.addDoDom('span', options);
+    for (let i = 0; i < elements.length; i++) {
+      let text = elements[i];
+      let textOptions = {};
+      if ((i + 1) < elements.length && typeof elements[i + 1] === 'object') {
+        textOptions = elements[++i];
+      }
+      wrapper.addDomHtml(text, textOptions);
+    }
+    return wrapper;
+  }
+
   addDoDom (type, options) {
     if (options.parent) {
       console.warn('Cannot use `parent` parameter when using `addDoDom`');

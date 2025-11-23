@@ -1,3 +1,6 @@
+# 3.1.2
+- New `addDomHtmls()` method for easier complex inline strings building.
+
 # 3.1.1
 - New `addDomTexts()` method for easier complex inline strings building.
 
